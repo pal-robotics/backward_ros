@@ -1,0 +1,249 @@
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package backward_ros
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Forthcoming
+-----------
+* Rosify backward cpp, add automatic sighandle and rosconsole print
+* Update doc about color mode & std::ostream.
+* Fix typo in build link
+* Merge pull request #62 from bryant1410/master
+  Fix broken headings in Markdown files
+* Add color mode.
+  This is a breaking change.
+  The printer now offers a color_mode setting: automatic, always, never.
+  When given a FILE* stream on linux, the automatic mode will retrieve
+  file descriptor behind it and call isatty().
+* Merge branch 'print-to-streams' of https://github.com/ogdf/backward-cpp into ogdf-print-to-streams
+* Fix broken Markdown headings
+* Merge pull request #60 from ogdf/g++7-warnings
+  Fix g++ 7.0.1 warnings
+* enable tests that somebody thought it was a good idea to permanently disable.
+* Only catch signals with a default action of "Core"
+  Close #59
+* Fix g++- 7.0.1 -Wshadow warnings in test lib
+* Fix -Wshadow warnings from g++ 7.0.1
+* Fix -Wimplicit-fallthrough warning from g++ 7.0.1
+  The fallthrough (missing break after a case in a switch) is
+  not necessary. We can just move the whole default code move
+  down after the switch.
+* Merge pull request #58 from krf/fix-warning
+  Fix -Wmissing-noreturn warning from Clang
+* Fix -Wmissing-noreturn warning from Clang
+* Merge pull request #56 from akreuzkamp/master
+  Operator names are not supported by MSVC out of the box. Using them breaks code that needs to build with MSVC and/or (thus) uses "-fno-operator-names". As a header-only library should pursue maximal
+  portability, this PR replaces the single usage of operator names with the more portable operator syntax.
+* Use `&&` instead of `and`.
+  Operator names are not supported by MSVC out of the box. Using them
+  breaks code that needs to build with MSVC and/or (thus) uses
+  "-fno-operator-names". As a header-only library should pursue maximal
+  portability, this commit replaces the single usage of operator names
+  with the more portable operator syntax.
+* Merge pull request #57 from bombela/issue-55
+  Fix conanfile recipe
+* [#55] Conan options are represented as attributes instead of map entries
+* Revert "[#55] omit cmake options in conanfile build step"
+  This reverts commit 06fb80378505d5792c8ce8dcadacdabb9ae45ce7.
+* [#55] omit cmake options in conanfile build step
+* conan recipe url field points to official repository
+* Conan badge pointing to 1.3.0 release
+* conan recipe pointing to 1.3.0 release
+* Update travis ci badge to point to official builds
+* conan.io package
+* Merge pull request #49 from ruipires/master
+  adds support for ppc architecture
+* Run tests on Travis CI
+* adds support for ppc architecture
+* Merge pull request #45 from edisongustavo/master
+  Add support to find_package(Backward)
+* Add detailed instructions on how to use cmake to integrate Backward
+* Prevent that the cmake variable BACKWARD_INCLUDE_DIRS be infinitely appended on successive cmake runs
+* Don't use find_package() in CMakeLists.txt since it does not make sense
+* Merge pull request #44 from ogdf/make-skip-public
+  Make StackTraceImpl*::skip_n_firsts() setter public
+* Merge pull request #43 from ogdf/make-context-sizes-configurable
+  Printer: Make context sizes configurable
+* Add install()
+* Add support to find_package(Backward)
+* Make StackTraceImpl*::skip_n_firsts() setter public
+  When the stack trace is used directly (and not by a signal),
+  one may want to hide some of the first stack items because
+  they will always be the same calls.
+* Printer: Make context sizes configurable
+* Let Colorizer reset on initialization
+* Make Printer::print methods available for streams
+* Merge pull request #40 from Jiboo/master
+  Don't append definitions if already cached
+* Don't append definitions if already cached
+* Merge pull request #39 from merlinthered/master
+  Some CMake-related fixes
+* Export BACKWARD\_[...] CMake variables as cache variables
+  If we do not export the variables set in BackwardMacros.cmake as cache variables, they will not be visible wherever add_backward() is called, and the macro will do nothing.
+  Also, fix typo `BACKWARD_INCLUDE_DIR` -> `BACKWARD_INCLUDE_DIRS`
+* Readme fixes/clarifications for CMake
+  Fixed name of BACKWARD_ENABLE variable
+  Changed "myproject" to "mytarget" to avoid confusion
+* Merge pull request #34 from milianw/fix_bfd_compile_on_archlinux
+  Define PACKAGE and PACKAGE_VERSION before including bfd.h
+* Merge pull request #35 from vvjcarter/master
+  Add current List directory so that BackwardMacros.cmake correctly inc…
+* Add current List directory so that BackwardMacros.cmake correctly includes the directory
+* Define PACKAGE and PACKAGE_VERSION before including bfd.h
+  On ArchLinux at least the bfd.h header errors out early if
+  PACKAGE or PACKAGE_VERSION have not been set. This patch
+  makes backward.hpp compile on this platform for me.
+* Merge pull request #33 from Manu343726/master
+  Add ARM support
+* Add ARM support
+* Merge pull request #30 from akreuzkamp/master
+  Split off cmake macros and dependency detection to BackwardMacros.cmake
+* Merge pull request #31 from akreuzkamp/fixQtCompatibility
+  Fix compatibility to Qt applications
+* Rename variable "signals" to "unix_signals".
+  This change is needed for compatibility to Qt applications.
+  Qt defines a macro "signals" that expands to nothing and is used by
+  Qt's meta object compiler (which is kind of a C++ pre-processor) to
+  add signal-slot feature (http://doc.qt.io/qt-5/signalsandslots.html).
+  This will cause compilation of backward.hpp to fail, when used from a
+  Qt application, because the variable "signals" will be expanded to ""
+  by the cpp pre processor.
+* Split off cmake macros and dependency detection.
+  This commit seperates some of the CMake code into a
+  BackwardMacros.cmake file. Including the CMakeLists.txt with
+  add_subdirectory doesn't work, because the variables it defines won't
+  be available from the including CMakeLists. With a .cmake file, they
+  will.
+  This change is backward-compatible, because CMakeLists.txt includes
+  the BackwardMacros.cmake as well.
+* Merge pull request #27 from gbitzes/master
+  Fix typos in README code examples
+* Fix typos in README code examples
+* Try to get the CMakeLists.txt working and somewhat flexible.
+* Merge pull request #23 from edisongustavo/master
+  Compile in Visual Studio 2010
+* Replace usages of alternative usages of boolean operators with more more standard ones since they don't compile in Visual Studio 2010.
+  Replacements are:
+  - 'and' => '&&'
+  - 'or'  => '||'
+  - 'not' => '!'
+  Also added some missing includes since MSVC was complaining of missing
+  symbols.
+* Update README.md
+  Remove any references to TraceWithLocals since its not even part of the source anymore.
+* Merge pull request #22 from edisongustavo/master
+  Compilers with GLIBC < 2.10 don't have the psiginfo() function
+* Compilers with GLIBC < 2.10 don't have the psiginfo() function
+* Merge pull request #20 from hesiod/master
+  Documentation
+* Revert 0660344
+  Turns out I was wrong, we do need that command.
+* Mark most cache values as advanced
+  To avoid confusion, hide some configuration value from the normal user.
+* Fix CMake style
+  I erred concerning CMake variable naming conventions.
+* Make feature detection values internal
+  Previously, the "feature detection options" (STACK_DETAILS\_* and STACK_WALKING\_*) had to be manually set by an user, but now, we (attempt) to detect libraries based on find_library, thus we don't need those to be cache values anymore. Libraries in non-default paths can be manually added in the corresponding _PATH cache value and for testing purposes, users can also disable libraries by supplying an empty string.
+* Fix message type
+  Whoops, there is no INFO message type. Make it a WARNING instead.
+* Remove unneeded CMake command
+  Definitions are already included with add_backward.
+* Describe CMake integration
+* Merge pull request #19 from hesiod/patch-3
+  Fix typo
+* Fix typo
+  Should be backward_DEFINITIONS instead of BACKWARD_DEFINITIONS.
+* Merge pull request #18 from hesiod/patch-2
+  Remove BACKWARD_ENABLE_ONLY_IN_DEBUG
+* Remove BACKWARD_ENABLE_ONLY_IN_DEBUG
+  Doesn't work (yet) because CMake lacks generator expressions when listing source files.
+* Merge pull request #15 from hesiod/fix-clang-warning
+  Fix compilation warning under clang
+* Merge pull request #16 from hesiod/build-system
+  Build system
+* Require CMake 2.8.8
+  Object libraries were introduced in CMake 2.8.8.
+  Signed-off-by: Tobias Markus <tobias@markus-regensburg.de>
+* Fix compilation warning under clang
+  Clang complains about adding const to a reference type having no effect.
+  Fix this by adding and using a const_ref_t.
+* Improve CMake build system, allow easy integration
+  Make backward easier to use for CMake users, enabling easy feature detection and integration.
+  We now detect presence of libdw, libbfd and libunwind directly in the script. The macro add_backward adds needed libraries, definitions and the include directory to a target. The pseudo-library enable_backward enables automatic backward processing for common failures to a target.
+  If BACKWARD_ENABLE_ONLY_IN_DEBUG is set to true, automatic backward processing is only added when the build type is Debug or RelWithDebInfo.
+  To integrate backward in an existing CMake project:
+  add_subdirectory(/path/to/backward-cpp)
+  add_executable(mytarget example.cpp ${backward_ENABLE})
+  add_backward(mytarget)
+  BACKWARD_DEFINITIONS has been renamed to backward_DEFINITIONS to have a naming convention for public variables similiar to the find modules.
+* Remove unneeded include directive
+  There is no "include" directory in backward-cpp and hence no need to include it.
+* Add option to disable test compilation
+* Merge pull request #14 from hesiod/patch-1
+  Include current source directory
+* Include current source directory
+  When including the project from a parent directory (add_subdirectory), backward.hpp is not found by the tests because we include CMAKE_SOURCE_DIR, which is the parent's source directory. Include CMAKE_CURRENT_SOURCE_DIR instead.
+* Merge pull request #13 from fabceolin/master
+  Fixing buffer overflow on signals array
+* Fixing buffer overflow on signals array
+* stackoverflow test
+* Tests refactored onto less files.
+* Tests are all passing now.
+* Better test checking
+  - fork every test
+  - capture signals
+  - more assertion tools
+  - test can be expected to fail
+* Adding BACKWARD_HAS\_* config in cmake for tests
+* A more flexible and factorized stack Printer.
+* Add defines for "ATLEAST_CXX11"
+* A system specializable demangler implementation.
+* Remove unused local var support (for now)
+* Remove noisy comments.
+* Little typo fix
+* Add .gitignore
+* Some improvement to builds.sh
+* Merge pull request #11 from Kobolog/master
+  Fixed an unused parameter warning.
+* Proper way to mark a variable unused.
+  Instead of explicitly void-ing a variable, just make it anonymous.
+* Fix unused parameter warnings.
+  In SignalHandling constructor, the empty signal vector is never used,
+  which triggers unused parameter warnings at least on Clang 3.2.
+* Merge pull request #10 from Kobolog/master
+  Unsigned line counters.
+* Resolve issue #6: unsigned line counters.
+  Change all the line counter variable types from size_t to unsigned, so
+  that we can printf() them as '%u' in a portable way, effectively fixing
+  build errors on ancient i386 machines.
+* Merge pull request #9 from bastih/master
+  Remove debug printf
+* Remove debug printf from SignalHandling()
+* Merge pull request #7 from bastih/master
+  Allow for selection of signals thanks @bastih
+* Add default parameter to BACKWARD_SYSTEN_UNKNOWN signal handler
+* Improve as per bombela's suggestions, add test
+* Merge branch 'buildfix'
+* Remove non-existing testcase from CMakeLists
+* Make signals configurable
+  This allows for selecting the appropriate signals
+  and avoids conflicts with other tools that specific
+  signals i.e. profilers
+* Merge pull request #5 from Kobolog/master
+  Fixed using the placebo implementation on MacOS
+* fixed a typo in the stacktrace_tag, which is fortunately unused as of now
+* added an empty body to Colorize::init() method on non-Linux systems
+* Use a dedicated stack for signals handler
+* few modification for pedantic compliance with C++98 and C++11
+* a little shell script to manipulate many builds
+* Merge branch 'master' of github.com:bombela/backward-cpp
+* Attribute Copyright to Google Inc.
+* A little hack to declare _Unwind_GetIPInfo with clang.
+  fixes #2
+* Attribute Copyright to Google Inc.
+* Merge pull request #1 from remram44/fix-readme
+  Corrections to the README file
+* Corrections to the README file
+* Update README.md
+* Some typo fixes.
+* Initial import.
+* Contributors: Andrey Sibiryov, Anton Kreuzkamp, Edison Gustavo Muenz, Fabrício Ceolin, François-Xavier Bourlet, Georgios Bitzes, Jean-Bapiste Lepesme, Kevin Funk, Manu343726, Marc Strämke, Milian Wolff, Remi Rampin, Rui Pires, Santiago Castro, Stephan Beyer, Tobias Markus, Victor Lopez, bastih, hesiod, merlinthered
