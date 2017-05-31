@@ -2,8 +2,8 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.4 (2017-05-31)
+------------------
 * Rosify backward cpp, add automatic sighandle and rosconsole print
 * Update doc about color mode & std::ostream.
 * Fix typo in build link
