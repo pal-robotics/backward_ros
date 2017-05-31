@@ -59,6 +59,7 @@
 #	endif
 #endif
 
+#include <ros/console.h>
 #include <algorithm>
 #include <cctype>
 #include <cstdio>
@@ -2039,7 +2040,9 @@ private:
 
 		Printer printer;
 		printer.address = true;
-		printer.print(st, stderr);
+        std::stringstream ss;
+        printer.print(st, ss);
+        ROS_ERROR_STREAM(ss.str());
 
 #if _XOPEN_SOURCE >= 700 || _POSIX_C_SOURCE >= 200809L
 		psiginfo(info, 0);
@@ -2067,6 +2070,11 @@ public:
 
 #endif // BACKWARD_SYSTEM_UNKNOWN
 
+} // namespace backward
+
+#define ENABLE_BACKWARD \
+namespace backward { \
+backward::SignalHandling sh; \
 } // namespace backward
 
 #endif /* H_GUARD */

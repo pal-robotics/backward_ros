@@ -21,9 +21,17 @@
 # SOFTWARE.
 
 cmake_minimum_required(VERSION 2.8.12)
-project(backward CXX)
+project(backward_ros)
 
-include(BackwardConfig.cmake)
+
+find_package(catkin REQUIRED roscpp)
+catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES backward
+  CFG_EXTRAS "BackwardConfig.cmake" "BackwardConfigCatkin.cmake"
+
+)
+include(cmake/BackwardConfig.cmake)
 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_STANDARD 11)
@@ -40,8 +48,9 @@ endif()
 ###############################################################################
 # BACKWARD OBJECT
 ###############################################################################
+include_directories(include)
 
-add_library(backward_object OBJECT backward.cpp)
+add_library(backward_object OBJECT src/backward.cpp)
 target_compile_definitions(backward_object PRIVATE ${BACKWARD_DEFINITIONS})
 target_include_directories(backward_object PRIVATE ${BACKWARD_INCLUDE_DIRS})
 set(BACKWARD_ENABLE $<TARGET_OBJECTS:backward_object> CACHE STRING
@@ -56,7 +65,9 @@ option(BACKWARD_SHARED "Build dynamic backward-cpp shared lib" OFF)
 if(BACKWARD_SHARED)
     set(libtype SHARED)
 endif()
-add_library(backward ${libtype} backward.cpp)
+include_directories(SYSTEM ${catkin_INCLUDE_DIRS})
+add_library(backward ${libtype} src/backward.cpp)
+target_link_libraries(backward ${catkin_LIBRARIES})
 target_compile_definitions(backward PUBLIC ${BACKWARD_DEFINITIONS})
 target_include_directories(backward PUBLIC ${BACKWARD_INCLUDE_DIRS})
 
@@ -102,11 +113,17 @@ if(BACKWARD_TESTS)
 	endforeach()
 endif()
 
-install(
-    FILES "backward.hpp"
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/include
+install(TARGETS backward
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
-install(
-    FILES "BackwardConfig.cmake"
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/backward
+
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+)
+
+install(DIRECTORY
+  cmake
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
