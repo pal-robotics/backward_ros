@@ -60,7 +60,7 @@ set(BACKWARD_ENABLE $<TARGET_OBJECTS:backward_object> CACHE STRING
 ###############################################################################
 # BACKWARD LIBRARY (Includes backward.cpp)
 ###############################################################################
-option(BACKWARD_SHARED "Build dynamic backward-cpp shared lib" OFF)
+option(BACKWARD_SHARED "Build dynamic backward-cpp shared lib" ON)
 
 if(BACKWARD_SHARED)
     set(libtype SHARED)
