@@ -2227,7 +2227,7 @@ public:
 #elif defined(__APPLE__) && defined(__x86_64__)
 		error_addr = reinterpret_cast<void*>(uctx->uc_mcontext->__ss.__rip);
 #else
-#	warning ":/ sorry, ain't know no nothing none not of your architecture!"
+#	pragma message "warning:/ sorry, ain't know no nothing none not of your architecture!"
 #endif
 		if (error_addr) {
 			st.load_from(error_addr, 32);
