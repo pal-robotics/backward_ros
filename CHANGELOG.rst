@@ -2,8 +2,8 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.6 (2018-05-02)
+------------------
 * Replace #warning with #pragma message
 * Update backward to the latest version
 * Fx wrong LIBRARIES variable concatenation
