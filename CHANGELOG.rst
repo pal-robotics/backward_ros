@@ -2,6 +2,13 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Replace #warning with #pragma message
+* Update backward to the latest version
+* Fx wrong LIBRARIES variable concatenation
+* Contributors: Victor Lopez
+
 0.1.5 (2018-04-27)
 ------------------
 * Fixed version for finding libraries for catkin_make
