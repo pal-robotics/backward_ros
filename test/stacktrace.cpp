@@ -21,9 +21,9 @@
  * SOFTWARE.
  */
 
-#include "backward.hpp"
+#include <backward_ros/backward.hpp>
 #include <cstdio>
-#include "test/test.hpp"
+#include "test.hpp"
 
 using namespace backward;
 

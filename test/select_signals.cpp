@@ -21,11 +21,11 @@
  * SOFTWARE.
  */
 
-#include "backward.hpp"
+#include <backward_ros/backward.hpp>
 
 #include <signal.h>
 #include <stdio.h>
-#include "test/test.hpp"
+#include "test.hpp"
 
 using namespace backward;
 
