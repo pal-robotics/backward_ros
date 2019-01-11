@@ -24,7 +24,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <cstdlib>
-#include "test/test.hpp"
+#include "test.hpp"
 
 TEST (empty_test) { }
 

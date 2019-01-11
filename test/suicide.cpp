@@ -21,11 +21,11 @@
  * SOFTWARE.
  */
 
-#include "backward.hpp"
+#include <backward_ros/backward.hpp>
 
 #include <cstdio>
 #include <sys/resource.h>
-#include "test/test.hpp"
+#include "test.hpp"
 
 using namespace backward;
 
