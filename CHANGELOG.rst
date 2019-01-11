@@ -2,6 +2,13 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request #3 from veimox/bugfix/fix-tests-headers
+  modified heders to be included with current cmake configuration
+* modified heders to be included with current cmake configuration
+* Contributors: Jorge Rodriguez, Victor Lopez
+
 0.1.6 (2018-05-02)
 ------------------
 * Replace #warning with #pragma message
