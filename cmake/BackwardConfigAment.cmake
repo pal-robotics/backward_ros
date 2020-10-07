@@ -7,12 +7,6 @@ elseif(LIBBFD_FOUND)
 else()
     set(backward_ros_forced_LIBRARIES "${backward_ros_LIBRARIES}")
 endif()
-if (ROSCPP_FOUND)
-    add_definitions(-DBACKWARD_HAS_ROSCPP=1)
-endif()
-set(backward_ros_LIBRARIES "") #This is used by catkin, but we don't need it since we force it below
-set(backward_ros_full_path_LIBRARIES "") #This is used by catkin, but we don't need it since we force it below
-
 #Hack to find absolute path to libraries, won't work if library is not compiled yet
 foreach(lib ${backward_ros_forced_LIBRARIES})
     if(NOT EXISTS ${lib})

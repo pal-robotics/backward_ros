@@ -20,17 +20,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.5)
 project(backward_ros)
 
 
-find_package(catkin REQUIRED roscpp)
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES backward
-  CFG_EXTRAS "BackwardConfig.cmake" "BackwardConfigCatkin.cmake"
-
-)
+find_package(ament_cmake)
 include(cmake/BackwardConfig.cmake)
 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -65,10 +59,8 @@ option(BACKWARD_SHARED "Build dynamic backward-cpp shared lib" OFF)
 if(BACKWARD_SHARED)
     set(libtype SHARED)
 endif()
-include_directories(SYSTEM ${catkin_INCLUDE_DIRS})
-add_library(backward ${libtype} src/backward.cpp)
+add_library(backward SHARED ${libtype} src/backward.cpp)
 add_backward(backward)
-target_link_libraries(backward ${catkin_LIBRARIES})
 target_compile_definitions(backward PUBLIC ${BACKWARD_DEFINITIONS})
 target_include_directories(backward PUBLIC ${BACKWARD_INCLUDE_DIRS})
 
@@ -115,16 +107,16 @@ if(BACKWARD_TESTS)
 endif()
 
 install(TARGETS backward
-   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+  DESTINATION lib)
+ament_export_libraries(backward)
 
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-)
+install(DIRECTORY include/
+  DESTINATION include)
+ament_export_include_directories(include)
 
-install(DIRECTORY
-  cmake
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+install(DIRECTORY cmake
+	DESTINATION share/${PROJECT_NAME}
+)
+ament_package(
+	CONFIG_EXTRAS_POST "cmake/BackwardConfig.cmake" "cmake/BackwardConfigAment.cmake"
 )
