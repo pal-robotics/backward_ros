@@ -5,6 +5,11 @@ For info about the backward-cpp project check https://github.com/bombela/backwar
 
 This wrapper should make it very easy to integrate backward_cpp into your ROS packages.
 
+## ROS2
+
+There's a work in progress version in the foxy-devel branch.
+
+
 ## Integration of backward_ros
 
 Add backward\_ros to your package.xml `<depend>backward_ros</depend>`
