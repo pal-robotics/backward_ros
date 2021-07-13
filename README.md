@@ -7,7 +7,7 @@ This wrapper should make it very easy to integrate backward_cpp into your ROS pa
 
 ## ROS2
 
-There's a work in progress version in the foxy-devel branch.
+There's a foxy-devel branch and it has been released to the most recent ROS2 versions
 
 
 ## Integration of backward_ros
