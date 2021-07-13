@@ -2,6 +2,13 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update ROS2 note
+* Update backward.hpp from https://github.com/bombela/backward-cpp
+* Add note about ROS2 to readme
+* Contributors: Victor Lopez
+
 0.1.7 (2019-01-11)
 ------------------
 * Merge pull request #3 from veimox/bugfix/fix-tests-headers
