@@ -2,8 +2,8 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.8 (2021-07-13)
+------------------
 * Update ROS2 note
 * Update backward.hpp from https://github.com/bombela/backward-cpp
 * Add note about ROS2 to readme
