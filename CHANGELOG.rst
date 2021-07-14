@@ -2,8 +2,8 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2021-07-14)
+------------------
 * Add missing ament_cmake dependency
 * Contributors: Victor Lopez
 
