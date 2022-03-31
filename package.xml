@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>backward_ros</name>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <description>The backward_ros package is a ros wrapper of backward-cpp from https://github.com/bombela/backward-cpp </description>
 
   <maintainer email="victor.lopez@pal-robotics.com">Victor López</maintainer>

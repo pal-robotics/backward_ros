@@ -2,8 +2,8 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2022-03-31)
+------------------
 * Merge pull request #11 from vatanaksoytezer/vatan/fix_fphsa
   Fix name mismatch warnings
 * Fix name mismatch warnings
