@@ -2,6 +2,13 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request #11 from vatanaksoytezer/vatan/fix_fphsa
+  Fix name mismatch warnings
+* Fix name mismatch warnings
+* Contributors: Jordan Palacios, Vatan Aksoy Tezer
+
 1.0.1 (2021-07-14)
 ------------------
 * Add missing ament_cmake dependency
