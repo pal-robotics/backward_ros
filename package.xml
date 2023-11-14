@@ -8,6 +8,8 @@
 
   <license>MIT</license>
 
+  <url type="website">https://github.com/pal-robotics/backward_ros</url>
+
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>libdw-dev</depend>
 
