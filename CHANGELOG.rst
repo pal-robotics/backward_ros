@@ -2,6 +2,11 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add website tag
+* Contributors: Noel Jimenez
+
 1.0.2 (2022-03-31)
 ------------------
 * Merge pull request #11 from vatanaksoytezer/vatan/fix_fphsa
