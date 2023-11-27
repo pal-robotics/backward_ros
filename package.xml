@@ -10,10 +10,12 @@
 
   <url type="website">https://github.com/pal-robotics/backward_ros</url>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>cmake</buildtool_depend>
+
   <depend>libdw-dev</depend>
 
   <export>
-    <build_type>ament_cmake</build_type>
+    <build_type>cmake</build_type>
+    <backward_ros_INCLUDE_DIRS>include</backward_ros_INCLUDE_DIRS>
   </export>
 </package>

@@ -23,8 +23,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(backward_ros)
 
-
-find_package(ament_cmake)
 include(cmake/BackwardConfig.cmake)
 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -35,8 +33,8 @@ set(CMAKE_CXX_STANDARD 11)
 ###############################################################################
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_COMPILER_IS_GNUCXX)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic-errors")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic-errors")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 endif()
 
 ###############################################################################
@@ -48,7 +46,7 @@ add_library(backward_object OBJECT src/backward.cpp)
 target_compile_definitions(backward_object PRIVATE ${BACKWARD_DEFINITIONS})
 target_include_directories(backward_object PRIVATE ${BACKWARD_INCLUDE_DIRS})
 set(BACKWARD_ENABLE $<TARGET_OBJECTS:backward_object> CACHE STRING
-	"Link with this object to setup backward automatically")
+        "Link with this object to setup backward automatically")
 
 
 ###############################################################################
@@ -69,54 +67,67 @@ target_include_directories(backward PUBLIC ${BACKWARD_INCLUDE_DIRS})
 ###############################################################################
 
 if(BACKWARD_TESTS)
-	enable_testing()
+        enable_testing()
 
-	add_library(test_main SHARED test/_test_main.cpp)
+        add_library(test_main SHARED test/_test_main.cpp)
 
-	macro(backward_add_test src)
-		get_filename_component(name ${src} NAME_WE)
-		set(test_name "test_${name}")
+        macro(backward_add_test src)
+                get_filename_component(name ${src} NAME_WE)
+                set(test_name "test_${name}")
 
-		add_executable(${test_name} ${src} ${ARGN})
+                add_executable(${test_name} ${src} ${ARGN})
 
-		target_link_libraries(${test_name} PRIVATE Backward::Backward test_main)
+                target_link_libraries(${test_name} PRIVATE Backward::Backward test_main)
 
-		add_test(NAME ${name} COMMAND ${test_name})
-	endmacro()
+                add_test(NAME ${name} COMMAND ${test_name})
+        endmacro()
 
-	# Tests without backward.cpp
-	set(TESTS
-		test
-		stacktrace
-		rectrace
-		select_signals
-		)
+        # Tests without backward.cpp
+        set(TESTS
+                test
+                stacktrace
+                rectrace
+                select_signals
+                )
 
-	foreach(test ${TESTS})
-		backward_add_test(test/${test}.cpp)
-	endforeach()
+        foreach(test ${TESTS})
+                backward_add_test(test/${test}.cpp)
+        endforeach()
 
-	# Tests with backward.cpp
-	set(TESTS
-		suicide
-		)
+        # Tests with backward.cpp
+        set(TESTS
+                suicide
+                )
 
-	foreach(test ${TESTS})
-		backward_add_test(test/${test}.cpp ${BACKWARD_ENABLE})
-	endforeach()
+        foreach(test ${TESTS})
+                backward_add_test(test/${test}.cpp ${BACKWARD_ENABLE})
+        endforeach()
 endif()
 
 install(TARGETS backward
-  DESTINATION lib)
-ament_export_libraries(backward)
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin
+)
 
 install(DIRECTORY include/
   DESTINATION include)
-ament_export_include_directories(include)
 
 install(DIRECTORY cmake
-	DESTINATION share/${PROJECT_NAME}
+        DESTINATION share/${PROJECT_NAME}
 )
-ament_package(
-	CONFIG_EXTRAS_POST "cmake/BackwardConfig.cmake" "cmake/BackwardConfigAment.cmake"
+
+include(CMakePackageConfigHelpers)
+set(BACKWARD_ROS_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}" CACHE PATH "backward_ros install prefix")
+configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}Config.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+    INSTALL_DESTINATION lib/cmake/${PROJECT_NAME}
+    PATH_VARS BACKWARD_ROS_INSTALL_PREFIX
 )
+
+
+configure_file(cmake/BackwardConfig.cmake ${CMAKE_CURRENT_BINARY_DIR}/BackwardConfig.cmake @ONLY)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/BackwardConfig.cmake DESTINATION share/${PROJECT_NAME}/cmake)
+
