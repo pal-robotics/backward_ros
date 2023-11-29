@@ -131,3 +131,13 @@ configure_file(cmake/BackwardConfig.cmake ${CMAKE_CURRENT_BINARY_DIR}/BackwardCo
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/BackwardConfig.cmake DESTINATION share/${PROJECT_NAME}/cmake)
 
+include(CTest)
+if(BUILD_TESTING)
+  find_package(ament_lint_auto QUIET)
+  if(ament_lint_auto_FOUND)
+    ament_lint_auto_find_test_dependencies()
+    ament_execute_extensions(ament_lint_auto)
+  endif()
+endif()
+
+
