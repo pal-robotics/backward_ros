@@ -1,0 +1,4 @@
+@PACKAGE_INIT@
+set_and_check(backward_ros_INCLUDE_DIRS "@BACKWARD_ROS_INSTALL_PREFIX@/include")
+set_and_check(backward_ros_LIBRARIES "@BACKWARD_ROS_INSTALL_PREFIX@/lib/libbackward.so")
+check_required_components(backward_ros)
