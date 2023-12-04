@@ -2,8 +2,8 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.4 (2023-12-04)
+------------------
 * Merge branch 'cmake' into 'foxy-devel'
   Implement it as a pure CMake library
   See merge request qa/backward_ros!4
