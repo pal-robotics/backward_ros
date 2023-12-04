@@ -2,6 +2,15 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'cmake' into 'foxy-devel'
+  Implement it as a pure CMake library
+  See merge request qa/backward_ros!4
+* Remove INCLUDE_DIRS from package.xml
+* Implement it as a pure CMake library
+* Contributors: Adria Roig
+
 1.0.3 (2023-11-14)
 ------------------
 * Add website tag
