@@ -2,8 +2,8 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.5 (2023-12-29)
+------------------
 * Merge pull request #14 from christophfroehlich/patch-1
   Fix missing cmake config install rule
 * Readd old configuration
