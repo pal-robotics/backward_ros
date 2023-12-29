@@ -129,6 +129,7 @@ configure_package_config_file(
 
 configure_file(cmake/BackwardConfig.cmake ${CMAKE_CURRENT_BINARY_DIR}/BackwardConfig.cmake @ONLY)
 
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/BackwardConfig.cmake DESTINATION share/${PROJECT_NAME}/cmake)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake DESTINATION share/${PROJECT_NAME}/cmake)
 
 include(CTest)
