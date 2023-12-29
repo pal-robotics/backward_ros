@@ -2,6 +2,15 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request #14 from christophfroehlich/patch-1
+  Fix missing cmake config install rule
+* Readd old configuration
+  Co-authored-by: Sai Kishor Kothakota <saisastra3@gmail.com>
+* Update CMakeLists.txt
+* Contributors: Christoph Fröhlich, Sai Kishor Kothakota
+
 1.0.4 (2023-12-04)
 ------------------
 * Merge branch 'cmake' into 'foxy-devel'
