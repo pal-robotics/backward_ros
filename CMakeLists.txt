@@ -26,7 +26,7 @@ project(backward_ros)
 include(cmake/BackwardConfig.cmake)
 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 ###############################################################################
 # COMPILER FLAGS
