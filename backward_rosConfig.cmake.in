@@ -1,4 +1,8 @@
 @PACKAGE_INIT@
 set_and_check(backward_ros_INCLUDE_DIRS "@BACKWARD_ROS_INSTALL_PREFIX@/include")
+if(WIN32)
 set_and_check(backward_ros_LIBRARIES "@BACKWARD_ROS_INSTALL_PREFIX@/lib/backward.lib")
+else()
+set_and_check(backward_ros_LIBRARIES "@BACKWARD_ROS_INSTALL_PREFIX@/lib/libbackward.so")
+endif()
 check_required_components(backward_ros)
