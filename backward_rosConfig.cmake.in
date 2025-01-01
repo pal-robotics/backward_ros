@@ -1,9 +1,9 @@
 @PACKAGE_INIT@
-set_and_check(backward_ros_INCLUDE_DIRS "@BACKWARD_ROS_INSTALL_PREFIX@/include")
+set_and_check(backward_ros_INCLUDE_DIRS "@PACKAGE_BACKWARD_ROS_INSTALL_PREFIX@/include")
 if(WIN32)
-set_and_check(backward_ros_LIBRARIES "@BACKWARD_ROS_INSTALL_PREFIX@/lib/backward.lib")
+set_and_check(backward_ros_LIBRARIES "@PACKAGE_BACKWARD_ROS_INSTALL_PREFIX@/lib/backward.lib")
 else()
-set_and_check(backward_ros_LIBRARIES "@BACKWARD_ROS_INSTALL_PREFIX@/lib/libbackward.so")
+set_and_check(backward_ros_LIBRARIES "@PACKAGE_BACKWARD_ROS_INSTALL_PREFIX@/lib/libbackward.so")
 endif()
 check_required_components(backward_ros)
-include(@BACKWARD_ROS_INSTALL_PREFIX@/share/@PROJECT_NAME@/cmake/BackwardConfigAment.cmake)
+include(@PACKAGE_BACKWARD_ROS_INSTALL_PREFIX@/share/@PROJECT_NAME@/cmake/BackwardConfigAment.cmake)
