@@ -117,6 +117,10 @@ install(DIRECTORY cmake
         DESTINATION share/${PROJECT_NAME}
 )
 
+install(FILES package.xml
+        DESTINATION share/${PROJECT_NAME}
+)
+
 include(CMakePackageConfigHelpers)
 set(BACKWARD_ROS_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}" CACHE PATH "backward_ros install prefix")
 configure_package_config_file(
