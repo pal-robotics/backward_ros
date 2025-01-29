@@ -2,6 +2,8 @@
 set_and_check(backward_ros_INCLUDE_DIRS "@PACKAGE_BACKWARD_ROS_INSTALL_PREFIX@/include")
 if(WIN32)
 set_and_check(backward_ros_LIBRARIES "@PACKAGE_BACKWARD_ROS_INSTALL_PREFIX@/lib/backward.lib")
+elseif(APPLE)
+set_and_check(backward_ros_LIBRARIES "@PACKAGE_BACKWARD_ROS_INSTALL_PREFIX@/lib/libbackward.dylib")
 else()
 set_and_check(backward_ros_LIBRARIES "@PACKAGE_BACKWARD_ROS_INSTALL_PREFIX@/lib/libbackward.so")
 endif()
