@@ -2,8 +2,8 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.7 (2025-01-30)
+------------------
 * Merge pull request #22 from Tobias-Fischer/patch-5
   Add dylib suffix on MacOS
 * Merge branch 'foxy-devel' into patch-5
