@@ -2,6 +2,17 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request #22 from Tobias-Fischer/patch-5
+  Add dylib suffix on MacOS
+* Merge branch 'foxy-devel' into patch-5
+* Install missing package.xml for the ros debian packages (#24)
+  Co-authored-by: Talha Gulbudak <talha.gulbudak@nxp.com>
+* Make backward_rosConfig.cmake file relocatable (#23)
+* Add dylib suffix on MacOS
+* Contributors: Jordan Palacios, Sai Kishor Kothakota, Silvio Traversaro, Tobias Fischer, talhagulbudak
+
 1.0.6 (2024-11-07)
 ------------------
 * Update backward_rosConfig.cmake.in
