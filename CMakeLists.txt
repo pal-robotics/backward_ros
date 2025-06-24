@@ -28,6 +28,11 @@ include(cmake/BackwardConfig.cmake)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_STANDARD 14)
 
+if(WIN32)
+  # set the same behavior for windows as it is on linux
+  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif()
+
 ###############################################################################
 # COMPILER FLAGS
 ###############################################################################
