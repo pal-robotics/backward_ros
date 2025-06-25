@@ -2,8 +2,8 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.8 (2025-06-25)
+------------------
 * Export symbols for windows (#27)
 * Contributors: Christoph Fröhlich
 
