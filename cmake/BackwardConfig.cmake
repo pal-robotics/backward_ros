@@ -123,7 +123,7 @@ foreach(def ${BACKWARD_DEFINITIONS})
 	message(STATUS "${def}")
 endforeach()
 
-set(BACKWARD_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}")
+set(BACKWARD_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/../../../include/backward_ros")
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Backward
