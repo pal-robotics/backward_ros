@@ -24,5 +24,16 @@ foreach(lib ${backward_ros_forced_LIBRARIES})
         set(backward_ros_full_path_LIBRARIES "${backward_ros_full_path_LIBRARIES} ${lib}")
     endif()
 endforeach()
-SET(CMAKE_EXE_LINKER_FLAGS "-Wl,--no-as-needed ${backward_ros_full_path_LIBRARIES} -Wl,--as-needed ${CMAKE_EXE_LINKER_FLAGS}")
+# The --no-as-needed/--as-needed flags are specific to the GNU/binutils
+# linker. Other linkers (e.g. AppleClang's ld64 on macOS, or MSVC) do not
+# understand them and would fail. Only emit them for the GNU toolchain.
+set(no_as_needed)
+set(as_needed)
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    set(no_as_needed "-Wl,--no-as-needed")
+    set(as_needed "-Wl,--as-needed")
+endif()
+
+SET(CMAKE_EXE_LINKER_FLAGS "${no_as_needed} ${backward_ros_full_path_LIBRARIES} ${as_needed} ${CMAKE_EXE_LINKER_FLAGS}")
 

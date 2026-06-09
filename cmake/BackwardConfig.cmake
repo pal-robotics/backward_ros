@@ -125,11 +125,18 @@ endforeach()
 
 set(BACKWARD_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}")
 
+# BACKWARD_LIBRARIES can legitimately be empty (e.g. a header-only
+# configuration where no stack-walking backend library was found). Only
+# require it when it is actually set, so that find_package(Backward) still
+# succeeds in that case.
+set(FIND_PACKAGE_REQUIRED_VARS BACKWARD_INCLUDE_DIR)
+if(DEFINED BACKWARD_LIBRARIES)
+    list(APPEND FIND_PACKAGE_REQUIRED_VARS BACKWARD_LIBRARIES)
+endif()
+
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Backward
-    REQUIRED_VARS
-        BACKWARD_INCLUDE_DIR
-        BACKWARD_LIBRARIES
+    REQUIRED_VARS ${FIND_PACKAGE_REQUIRED_VARS}
 )
 list(APPEND _BACKWARD_INCLUDE_DIRS ${BACKWARD_INCLUDE_DIR})
 
