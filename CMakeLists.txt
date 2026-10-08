@@ -26,7 +26,7 @@ project(backward_ros)
 include(cmake/BackwardConfig.cmake)
 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 if(WIN32)
   # set the same behavior for windows as it is on linux
