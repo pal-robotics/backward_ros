@@ -2,6 +2,11 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump cmake_minimum_required to 3.10
+* Contributors: Noel Jimenez
+
 1.0.8 (2025-06-25)
 ------------------
 * Export symbols for windows (#27)
