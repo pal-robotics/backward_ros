@@ -2,8 +2,8 @@
 Changelog for package backward_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.9 (2026-10-08)
+------------------
 * Bump cmake_minimum_required to 3.10
 * Contributors: Noel Jimenez
 
